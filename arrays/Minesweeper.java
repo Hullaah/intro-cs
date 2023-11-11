@@ -13,7 +13,8 @@ public class Minesweeper {
         /* Create the mn cells */
         boolean[][] mines = new boolean[M + 2][N + 2];
         /* Place the k mines uniformly among the mn cells */
-        for (int i = 0; i < K; i++) {
+        int m = 0;
+        while (m < K) {
             int randomRow;
             int randomColumn;
             do {
@@ -22,7 +23,10 @@ public class Minesweeper {
             do {
                 randomRow = (int) (Math.random() * mines.length);
             } while (randomRow == 0 || randomRow == mines.length - 1);
-            mines[randomRow][randomColumn] = true;
+            if (!mines[randomRow][randomColumn]) {
+                m++;
+                mines[randomRow][randomColumn] = true;
+            }
         }
         /* Count the number of neighboring mines */
         int[][] minesCount = new int[M + 2][N + 2];

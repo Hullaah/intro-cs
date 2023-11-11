@@ -20,8 +20,9 @@ public class Birthday {
         do {
             for (int j = 0; j <= i; j++) fraction += peopleInRoom[j];
             fraction /= TRIALS;
-            System.out.println(i + 1 + "\t" + peopleInRoom[i] + "\t" + fraction);
+            if (fraction < 0.6)
+                System.out.println(i + 1 + "\t" + peopleInRoom[i] + "\t" + fraction);
             i++;
-        } while (fraction < 0.5);
+        } while (i <= peopleInRoom.length && fraction < 0.5);
     }
 }
